@@ -2,162 +2,220 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-          integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&family=Roboto:wght@300&family=Source+Code+Pro:wght@200&family=Source+Sans+Pro:ital,wght@1,300&display=swap');
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" sizes="192x192" href="./pwa/img/196x196.png">
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function() {
+        navigator.serviceWorker.register("./sw.js?v=6");
+      });
+    }
+  </script>
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&family=Roboto:wght@300&family=Source+Code+Pro:wght@200&family=Source+Sans+Pro:ital,wght@1,300&display=swap');
 
-        * {
-            transition: 500ms;
-        }
+      * {
+          transition: 500ms;
+      }
 
-        html {
-            background: #111111;
-            transition: 0ms;
-        }
+      html {
+          background: #111111;
+          transition: 0ms;
+      }
 
-        #lds-ripple {
-            display: inline-block;
-            position: absolute;
-            top: calc(50% - 80px);
-            left: calc(50% - 80px);
-            width: 80px;
-            height: 80px;
-        }
+      #lds-ripple {
+          display: inline-block;
+          position: absolute;
+          top: calc(50% - 80px);
+          left: calc(50% - 80px);
+          width: 80px;
+          height: 80px;
+      }
 
-        .lds-ripple div {
-            position: absolute;
-            border: 10px solid crimson;
-            opacity: 1;
-            border-radius: 50%;
-            animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-        }
+      .lds-ripple div {
+          position: absolute;
+          border: 10px solid crimson;
+          opacity: 1;
+          border-radius: 50%;
+          animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      }
 
-        .lds-ripple div:nth-child(2) {
-            animation-delay: -0.5s;
-        }
+      .lds-ripple div:nth-child(2) {
+          animation-delay: -0.5s;
+      }
 
-        @keyframes lds-ripple {
-            0% {
-                top: 36px;
-                left: 36px;
-                width: 0;
-                height: 0;
-                opacity: 1;
-            }
-            100% {
-                top: 0px;
-                left: 0px;
-                width: 72px;
-                height: 72px;
-                opacity: 0;
-            }
-        }
+      @keyframes lds-ripple {
+          0% {
+              top: 36px;
+              left: 36px;
+              width: 0;
+              height: 0;
+              opacity: 1;
+          }
+          100% {
+              top: 0px;
+              left: 0px;
+              width: 72px;
+              height: 72px;
+              opacity: 0;
+          }
+      }
 
-        h1#centered{
-            color: crimson;
-            width: 100%;
-            margin-top: 5%;
-            display: flex;
-            justify-content: center;
-            filter: drop-shadow(0 0 20px crimson);
-            font-family: Source Code Pro;
-            transition: 500ms;
-        }
+      h1#centered {
+          color: crimson;
+          width: 100%;
+          margin-top: 5%;
+          display: flex;
+          justify-content: center;
+          filter: drop-shadow(0 0 20px crimson);
+          font-family: Source Code Pro;
+          transition: 500ms;
+      }
 
-        div#apps {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
+      div#apps {
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+          flex-direction: row;
+          flex-wrap: wrap;
+      }
 
-        div#apps div.card {
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin: 35px;
-            border: 3px solid crimson;
-            width: 300px;
-            height: 200px;
-            border-left: 0px;
-            border-top: 0px;
-            padding: 20px;
-        }
+      div#apps div.card {
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin: 35px;
+          border: 3px solid crimson;
+          width: 300px;
+          height: 200px;
+          border-left: 0px;
+          border-top: 0px;
+          padding: 20px;
+      }
 
-        div#apps div.card:hover {
-            -webkit-box-shadow: 50px 0px 50px -30px crimson;
-            box-shadow: 50px 0px 50px -30px crimson;
-        }
+      div#apps div.card:hover {
+          border-right:3px solid #61d5e4;
+          border-bottom:3px solid #61d5e4;
+          filter: drop-shadow(0 0 20px #61d5e4);
+      }
 
-        div#apps div.card * {
-            filter: drop-shadow(0 0 20px crimson);
-            color: crimson;
-            font-size: 50px;
-        }
+      div#apps div.card * {
+          filter: drop-shadow(0 0 20px crimson);
+          color: crimson;
+          font-size: 50px;
+      }
 
-        div#apps div.card h2 {
-            text-align: center;
-            font-family: Source Code Pro;
-        }
+      div#apps div.card h2 {
+          text-align: center;
+          font-family: Source Code Pro;
+      }
 
-        a {
-            text-decoration: none;
-        }
-    </style>
-    <title>
-        Yefee's assistant!
-    </title>
+      input {
+          border-radius: 25px;
+          border: 3px solid crimson;
+          background: #3e3f5e;
+          outline: none;
+          text-align: center;
+          padding: 15px;
+          color: #61d5e4;
+          font-size: 25px;
+      }
+
+      input:focus {
+          border: 5px solid #61d5e4;
+          filter: drop-shadow(0 0 10px #61d5e4);
+      }
+
+      a {
+          text-decoration: none;
+      }
+
+      button {
+          margin-top: 50px;
+          width: 80px;
+          height: 80px;
+          border-radius: 100px;
+          cursor: pointer;
+          border: 0px;
+          background: crimson;
+          filter: drop-shadow(0 0 20px crimson);
+      }
+
+      button:hover {
+          background: #61d5e4;
+          filter: drop-shadow(0 0 20px #61d5e4);
+      }
+  </style>
+  <title>
+    Yefee's assistant!
+  </title>
 </head>
 
 <body>
 <div id="lds-ripple">
-    <div></div>
-    <div></div>
+  <div></div>
+  <div></div>
 </div>
 
 <div class="bg">
-    <div >
-        <h1 id="centered">Yefee's assistant</h1>
-    </div>
-    <div id="apps">
-        <a href="https://youtube.com" target="_blank">
-            <div class="card">
-                <i class="fab fa-youtube"></i>
-                <br>
-                <h2>YouTube</h2>
-            </div>
-        </a>
-        <a href="https://twitter.com" target="_blank">
-            <div class="card">
-                <i class="fab fa-twitter"></i>
-                <br>
-                <h2>Twitter</h2>
-            </div>
-        </a>
-        <a href="https://instagram.com" target="_blank">
-            <div class="card">
-                <i class="fab fa-instagram"></i>
-                <br>
-                <h2>Instagram</h2>
-            </div>
-        </a>
-        <a href="https://linkedin.com" target="_blank">
-            <div class="card">
-                <i class="fab fa-linkedin-in"></i>
-                <br>
-                <h2>LinkedIn</h2>
-            </div>
-        </a>
-    </div>
+  <div>
+    <h1 id="centered">Yefee's assistant</h1>
+  </div>
+  <div id="apps">
+    <a href="https://youtube.com" target="_blank">
+      <div class="card">
+        <i class="fab fa-youtube"></i>
+        <br>
+        <h2>YouTube</h2>
+      </div>
+    </a>
+    <a href="https://twitter.com" target="_blank">
+      <div class="card">
+        <i class="fab fa-twitter"></i>
+        <br>
+        <h2>Twitter</h2>
+      </div>
+    </a>
+    <a href="https://instagram.com" target="_blank">
+      <div class="card">
+        <i class="fab fa-instagram"></i>
+        <br>
+        <h2>Instagram</h2>
+      </div>
+    </a>
+    <a href="https://linkedin.com" target="_blank">
+      <div class="card">
+        <i class="fab fa-linkedin-in"></i>
+        <br>
+        <h2>LinkedIn</h2>
+      </div>
+    </a>
+  </div>
 </div>
+<br>
+<center>
+  <input type="text" id="searchGoogle">
+</center>
+<center>
+  <button onclick="search()"><i class="fas fa-search"></i></button>
+</center>
 </body>
+<script>
+  function search(){
+    window.location.href = 'https://www.google.com/search?q=' + input.value;
+  }
+  var input = document.getElementById("searchGoogle");
+  input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      search()
+    }
+  });
+</script>
 </html>
