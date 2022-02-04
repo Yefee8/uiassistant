@@ -1,2 +1,1 @@
-# A mini-assistant(or template) a mini-assistant consisting only of html and css consisting only of html and css
-
+# A link assistant made with HTML, CSS & JS
